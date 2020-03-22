@@ -7,6 +7,9 @@
  */
 
 import React from 'react';
+import ATHMPayment from './athmovil/ATHMPayment';
+import PayButton from './athmovil/PayButton';
+
 import {
   SafeAreaView,
   StyleSheet,
@@ -25,9 +28,40 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+const doit = function () {
+  console.log('do it now')
+  let total = 1.12;
+  let metaData1 = "Milk";
+  let metaData2 = "Shake 2";
+  let items = [
+        {
+          name: "Cake",
+          desc: "8oz",
+          price: 0.25,
+          quantity: 2,
+          metadata: "employee discount"
+        },
+        {
+          name: "Cola",
+          desc: "68oz",
+          price: 0.75,
+          quantity: 1,
+          metadata: "expiration 0820"
+        }
+      ];
+  let subtotal = 1.0;
+  let tax = 0.12;
+  const publicToken = "425a7db8bf73d54cd151a5c99a123ab79e80000a"
+  console.log(ATHMPayment)
+  ATHMPayment.pay("athmoviltest", publicToken, total, subtotal, tax, metaData1, metaData2, items, function (err) {
+     console.log("error", err)
+  });
+
+}
+
 const Home: () => React$Node = ({ navigation }) => {
-  console.log('navigation')
-  console.log(navigation)
+  console.log('ATHMPayment')
+  console.log(ATHMPayment)
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -46,6 +80,15 @@ const Home: () => React$Node = ({ navigation }) => {
               <Text style={styles.sectionDescription}>
                 Welcome home.
               </Text>
+
+<PayButton
+  language="es"
+  theme="dark"
+  onPress={
+    () => doit()
+  } />
+
+
             <Button
         title="Checkout Result"
         onPress={() => navigation.navigate('CheckoutResult')}
