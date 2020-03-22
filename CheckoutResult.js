@@ -25,7 +25,8 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-const Help: () => React$Node = ({ navigation }) => {
+const CheckoutResult: () => React$Node = ({ navigation }) => {
+  console.log("CheckoutResult")
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -97,4 +98,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Help;
+export default CheckoutResult;

@@ -20,6 +20,8 @@
 		389C317553E33A3F1F8D546D /* libPods-ATHMovilTest-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB030975745A46BEDE44A570 /* libPods-ATHMovilTest-tvOSTests.a */; };
 		3FA84136C452BBA3859DD65C /* libPods-ATHMovilTest-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EF66AE5E9D0D7210EFB22CA /* libPods-ATHMovilTest-tvOS.a */; };
 		85EFAE98E2FDF56BA4D276DD /* libPods-ATHMovilTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27475AA19CD5672C261F28A1 /* libPods-ATHMovilTest.a */; };
+		D485942224282B4E00E28D7C /* AthMovilModule.h in Sources */ = {isa = PBXBuildFile; fileRef = D485942024282B4E00E28D7C /* AthMovilModule.h */; };
+		D485942324282B4E00E28D7C /* AthMovilModule.m in Sources */ = {isa = PBXBuildFile; fileRef = D485942124282B4E00E28D7C /* AthMovilModule.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +64,8 @@
 		6C6463F8FDDACF8FDE78F141 /* Pods-ATHMovilTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ATHMovilTest.release.xcconfig"; path = "Target Support Files/Pods-ATHMovilTest/Pods-ATHMovilTest.release.xcconfig"; sourceTree = "<group>"; };
 		8EF66AE5E9D0D7210EFB22CA /* libPods-ATHMovilTest-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ATHMovilTest-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9338F2EA19D91D9F0B321D89 /* Pods-ATHMovilTestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ATHMovilTestTests.release.xcconfig"; path = "Target Support Files/Pods-ATHMovilTestTests/Pods-ATHMovilTestTests.release.xcconfig"; sourceTree = "<group>"; };
+		D485942024282B4E00E28D7C /* AthMovilModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AthMovilModule.h; sourceTree = "<group>"; };
+		D485942124282B4E00E28D7C /* AthMovilModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AthMovilModule.m; sourceTree = "<group>"; };
 		D966D736D6B1EE1A8C4B30A5 /* Pods-ATHMovilTest-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ATHMovilTest-tvOS.release.xcconfig"; path = "Target Support Files/Pods-ATHMovilTest-tvOS/Pods-ATHMovilTest-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		DB030975745A46BEDE44A570 /* libPods-ATHMovilTest-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ATHMovilTest-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD72BF31E6B91FC8640939D6 /* Pods-ATHMovilTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ATHMovilTest.debug.xcconfig"; path = "Target Support Files/Pods-ATHMovilTest/Pods-ATHMovilTest.debug.xcconfig"; sourceTree = "<group>"; };
@@ -159,6 +163,8 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				D485942024282B4E00E28D7C /* AthMovilModule.h */,
+				D485942124282B4E00E28D7C /* AthMovilModule.m */,
 				13B07FAE1A68108700A75B9A /* ATHMovilTest */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* ATHMovilTestTests */,
@@ -554,6 +560,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D485942224282B4E00E28D7C /* AthMovilModule.h in Sources */,
+				D485942324282B4E00E28D7C /* AthMovilModule.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
