@@ -1,4 +1,5 @@
 PODS:
+  - athmovil-checkout (2.0.0)
   - boost-for-react-native (1.63.0)
   - DoubleConversion (1.1.6)
   - FBLazyVector (0.61.5)
@@ -220,6 +221,7 @@ PODS:
   - Yoga (1.14.0)
 
 DEPENDENCIES:
+  - athmovil-checkout (from `https://github.com/evertec/athmovil-ios-sdk.git`)
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
   - FBReactNativeSpec (from `../node_modules/react-native/Libraries/FBReactNativeSpec`)
@@ -254,6 +256,8 @@ SPEC REPOS:
     - boost-for-react-native
 
 EXTERNAL SOURCES:
+  athmovil-checkout:
+    :git: https://github.com/evertec/athmovil-ios-sdk.git
   DoubleConversion:
     :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
   FBLazyVector:
@@ -305,7 +309,13 @@ EXTERNAL SOURCES:
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
+CHECKOUT OPTIONS:
+  athmovil-checkout:
+    :commit: 2362b3cd3812a33b6af744e58aa9a2b1848c434e
+    :git: https://github.com/evertec/athmovil-ios-sdk.git
+
 SPEC CHECKSUMS:
+  athmovil-checkout: 33a4d228ec02cde5ed905bcca67685906492119b
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: 5805e889d232975c086db112ece9ed034df7a0b2
   FBLazyVector: aaeaf388755e4f29cd74acbc9e3b8da6d807c37f
@@ -333,6 +343,6 @@ SPEC CHECKSUMS:
   ReactCommon: 198c7c8d3591f975e5431bec1b0b3b581aa1c5dd
   Yoga: f2a7cd4280bfe2cca5a7aed98ba0eb3d1310f18b
 
-PODFILE CHECKSUM: ac2ee1b6d9b70f3f011457fc43009a322e5c0719
+PODFILE CHECKSUM: 15b99a7f6f39f724fc474a06143e587198551a6f
 
 COCOAPODS: 1.9.1
