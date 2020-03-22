@@ -10,6 +10,7 @@ import React from 'react';
 import {
   SafeAreaView,
   StyleSheet,
+  Button,
   ScrollView,
   View,
   Text,
@@ -24,7 +25,7 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-const Help: () => React$Node = () => {
+const Help: () => React$Node = ({ navigation }) => {
   return (
     <>
       <StatusBar barStyle="dark-content" />

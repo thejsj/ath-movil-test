@@ -25,7 +25,7 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-const Home: ({ navigation }) => React$Node = () => {
+const Home: () => React$Node = ({ navigation }) => {
   console.log('navigation')
   console.log(navigation)
   return (
@@ -47,7 +47,11 @@ const Home: ({ navigation }) => React$Node = () => {
                 Welcome home.
               </Text>
             <Button
-        title="Go to Help"
+        title="Checkout Result"
+        onPress={() => navigation.navigate('CheckoutResult')}
+      />
+            <Button
+        title="Help"
         onPress={() => navigation.navigate('Help')}
       />
             </View>

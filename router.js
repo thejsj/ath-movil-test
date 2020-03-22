@@ -1,7 +1,7 @@
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 import Help from './help';
-import Home from './help';
+import Home from './Home';
 import CheckoutResult from './CheckoutResult';
 
 const AppNavigator = createStackNavigator({
