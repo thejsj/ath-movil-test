@@ -26,6 +26,7 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 const Help: () => React$Node = ({ navigation }) => {
+  console.log('help')
   return (
     <>
       <StatusBar barStyle="dark-content" />

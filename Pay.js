@@ -29,6 +29,35 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+const doit = function () {
+  let total = 1.12;
+  let metaData1 = "Milk";
+  let metaData2 = "Shake 2";
+  let items = [
+        {
+          name: "Cake",
+          desc: "8oz",
+          price: 0.25,
+          quantity: 2,
+          metadata: "employee discount"
+        },
+        {
+          name: "Cola",
+          desc: "68oz",
+          price: 0.75,
+          quantity: 1,
+          metadata: "expiration 0820"
+        }
+      ];
+  let subtotal = 1.0;
+  let tax = 0.12;
+  const publicToken = "425a7db8bf73d54cd151a5c99a123ab79e80000a"
+  console.log('ATHMPayment.pay')
+  ATHMPayment.pay("athmoviltest", publicToken, total, subtotal, tax, metaData1, metaData2, items, function (err) {
+     console.log("error", err)
+  });
+
+}
 
 const styles = StyleSheet.create({
   scrollView: {
@@ -52,6 +81,7 @@ const styles = StyleSheet.create({
   },
   sectionDescription: {
     marginTop: 8,
+    marginBottom: 10,
     fontSize: 18,
     fontWeight: '400',
     color: Colors.dark,
@@ -71,30 +101,46 @@ const styles = StyleSheet.create({
 
 
 
-export default class Home extends React.Component {
+export default class PayScreen extends React.Component {
+
+  componentDidMount() {
+    console.log('componentDidMount')
+    ReactNative.Linking.addEventListener('url', this._handleOpenURL);
+  }
+
+  componentWillUnmount() {
+    console.log('componentWillUnmount')
+    ReactNative.Linking.removeEventListener('url', this._handleOpenURL);
+  }
+
+  _handleOpenURL(event) {
+    console.log('url')
+    console.log(event.url);
+  }
 
   render () {
     return (
       <>
-        <StatusBar barStyle="dark-content" />
         <SafeAreaView>
           <ScrollView
             contentInsetAdjustmentBehavior="automatic"
             style={styles.scrollView}>
-            <Header />
-            {global.HermesInternal == null ? null : (
-              <View style={styles.engine}>
-                <Text style={styles.footer}>Home</Text>
-              </View>
-            )}
             <View style={styles.body}>
               <View style={styles.sectionContainer}>
                 <Text style={styles.sectionDescription}>
-                  Welcome home.
+                  Welcome to pay.
                 </Text>
+
+  <PayButton
+    language="es"
+    theme="dark"
+    onPress={
+      () => doit()
+    } />
+
 <Button
-          title="Pay"
-          onPress={() => this.props.navigation.navigate('PayScreen')}
+          title="Home"
+          onPress={() => this.props.navigation.navigate('Home')}
         />
 
               <Button
