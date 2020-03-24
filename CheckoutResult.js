@@ -7,6 +7,7 @@
  */
 
 import React from 'react';
+
 import {
   SafeAreaView,
   StyleSheet,
@@ -20,47 +21,6 @@ import {
 import {
   Colors
 } from 'react-native/Libraries/NewAppScreen';
-
-const PaymentResult : () => React$Node = ({ route, navigation }) => {
-  let paymentData
-  let errorMessage
-  if (route.params && route.params.athm_payment_data) {
-    try {
-      paymentData = JSON.parse(route.params.athm_payment_data)
-      status = paymentData.completed
-    } catch (err) {
-      errorMessage = 'There was an error retrieving your payment data'
-    }
-  }
-
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Checkout Result</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              {(status === true) && (<Text style={styles.sectionDescription}>
-                Your payment was completed succsefully.
-              </Text>)}
-              {(status === false) && (<Text style={styles.sectionDescription}>
-                There was an error in your payment.
-              </Text>)}
-            </View>
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
-};
 
 const styles = StyleSheet.create({
   scrollView: {
@@ -101,4 +61,56 @@ const styles = StyleSheet.create({
   },
 });
 
-export default PaymentResult;
+export default class PaymentResult extends React.Component {
+
+  static navigationOptions = {
+    header: { visible: false } // !!! Hide Header
+  }
+
+  render () {
+    let paymentData
+    let errorMessage
+    let status
+
+    if (this.props.route && this.props.route.params && this.props.route.params.athm_payment_data) {
+      try {
+        paymentData = JSON.parse(this.props.route.params.athm_payment_data)
+        status = paymentData.completed
+      } catch (err) {
+        errorMessage = 'There was an error retrieving your payment data'
+      }
+    }
+
+    return (
+      <>
+        <StatusBar barStyle="dark-content" />
+        <SafeAreaView>
+          <ScrollView
+            contentInsetAdjustmentBehavior="automatic"
+            style={styles.scrollView}>
+            {global.HermesInternal == null ? null : (
+              <View style={styles.engine}>
+                <Text style={styles.footer}>Checkout Result</Text>
+              </View>
+            )}
+            <View style={styles.body}>
+              <View style={styles.sectionContainer}>
+                <Text style={styles.sectionTitle}>Step One</Text>
+                {(status === true) && (<Text style={styles.sectionDescription}>
+                  Your payment was completed succsefully.
+                </Text>)}
+                {(status === false) && (<Text style={styles.sectionDescription}>
+                  There was an error in your payment.
+                </Text>)}
+                  <Button
+                    title="Home"
+                    onPress={() => this.props.navigation.navigate('Home')}
+                  />
+              </View>
+            </View>
+          </ScrollView>
+        </SafeAreaView>
+      </>
+    );
+  }
+}

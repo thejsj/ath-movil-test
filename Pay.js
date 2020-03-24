@@ -97,6 +97,10 @@ const styles = StyleSheet.create({
 
 export default class PayScreen extends React.Component {
 
+  static navigationOptions = {
+    header: null
+  }
+
   render () {
     return (
       <>

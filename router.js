@@ -8,12 +8,20 @@ import Home from './Home';
 import PayScreen from './Pay';
 import PaymentResult from './CheckoutResult';
 
+const options = ({navigation}) => {
+  return { headerShown: false }
+}
+
 const config = {
   Home: {
     screen: Home
   },
   PayScreen: {
     screen: PayScreen,
+    navigationOptions: ({navigation}) => {
+      console.log('navigationOptions')
+      return ({ header: false })
+    },
     path: '/payscreen'
   },
   Help: {
@@ -57,7 +65,7 @@ export default function App() {
     <NavigationContainer initialState={initialState} ref={ref}>
       <Stack.Navigator>
         <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="PaymentResult" component={PaymentResult} />
+        <Stack.Screen name="PaymentResult" component={PaymentResult} options={options}/>
         <Stack.Screen name="PayScreen" component={PayScreen} />
         <Stack.Screen name="Help" component={Help} />
       </Stack.Navigator>
