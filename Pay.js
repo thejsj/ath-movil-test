@@ -22,11 +22,7 @@ import {
 } from 'react-native';
 
 import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
+  Colors
 } from 'react-native/Libraries/NewAppScreen';
 
 const doit = function () {
@@ -99,24 +95,7 @@ const styles = StyleSheet.create({
   },
 });
 
-
-
 export default class PayScreen extends React.Component {
-
-  componentDidMount() {
-    console.log('componentDidMount')
-    ReactNative.Linking.addEventListener('url', this._handleOpenURL);
-  }
-
-  componentWillUnmount() {
-    console.log('componentWillUnmount')
-    ReactNative.Linking.removeEventListener('url', this._handleOpenURL);
-  }
-
-  _handleOpenURL(event) {
-    console.log('url')
-    console.log(event.url);
-  }
 
   render () {
     return (
@@ -128,29 +107,13 @@ export default class PayScreen extends React.Component {
             <View style={styles.body}>
               <View style={styles.sectionContainer}>
                 <Text style={styles.sectionDescription}>
-                  Welcome to pay.
+                  You owe $1.12.
                 </Text>
-
-  <PayButton
-    language="es"
-    theme="dark"
-    onPress={
-      () => doit()
-    } />
-
-<Button
-          title="Home"
-          onPress={() => this.props.navigation.navigate('Home')}
-        />
-
-              <Button
-          title="Checkout Result"
-          onPress={() => this.props.navigation.navigate('CheckoutResult')}
-        />
-              <Button
-          title="Help"
-          onPress={() => this.props.navigation.navigate('Help')}
-        />
+                <PayButton
+                  language="es"
+                  theme="dark"
+                  onPress={() => doit()}
+                  />
               </View>
             </View>
           </ScrollView>

@@ -18,14 +18,21 @@ import {
 } from 'react-native';
 
 import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
+  Colors
 } from 'react-native/Libraries/NewAppScreen';
 
-const PaymentResult : () => React$Node = ({ navigation }) => {
+const PaymentResult : () => React$Node = ({ route, navigation }) => {
+  let paymentData
+  let errorMessage
+  if (route.params && route.params.athm_payment_data) {
+    try {
+      paymentData = JSON.parse(route.params.athm_payment_data)
+      status = paymentData.completed
+    } catch (err) {
+      errorMessage = 'There was an error retrieving your payment data'
+    }
+  }
+
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -33,7 +40,6 @@ const PaymentResult : () => React$Node = ({ navigation }) => {
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>
-          <Header />
           {global.HermesInternal == null ? null : (
             <View style={styles.engine}>
               <Text style={styles.footer}>Checkout Result</Text>
@@ -42,14 +48,12 @@ const PaymentResult : () => React$Node = ({ navigation }) => {
           <View style={styles.body}>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Checkout resutl.
-              </Text>
-
-            <Button
-        title="Go Home"
-        onPress={() => navigation.navigate('Home')}
-      />
+              {(status === true) && (<Text style={styles.sectionDescription}>
+                Your payment was completed succsefully.
+              </Text>)}
+              {(status === false) && (<Text style={styles.sectionDescription}>
+                There was an error in your payment.
+              </Text>)}
             </View>
           </View>
         </ScrollView>
