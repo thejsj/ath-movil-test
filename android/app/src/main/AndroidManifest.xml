@@ -21,6 +21,12 @@
         </intent-filter>
       </activity>
       <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
+      <activity android:name=".athmovil.CheckoutResultActivity">
+        <intent-filter>
+          <action android:name="com.athmovil.ATHMRESPONSE" /> <!-- configure aquí el paquete de su aplicación y el nombre del filtro/esquema que usará en la solicitud de pago -->
+          <category android:name="android.intent.category.DEFAULT" />
+        </intent-filter>
+      </activity>
     </application>
 
 </manifest>
