@@ -41,9 +41,13 @@ NSString *VIEW_COMPONENT_PATH = @"paymentresult";
  * Use AMEnvironmentDevelopment para el modo de desarrollo, AMEnvironmentProduction para el modo de producción.
  * https://github.com/evertec/athmovil-ios-sdk#configure-the-sdk
  */
-- (void) configure:(nonnull NSString *)publicToken schema:(nonnull NSString *)schema {
+- (void) configure:(nonnull NSString *)publicToken schema:(nonnull NSString *)schema isProd:(nonnull BOOL):isProd{
   NSError *error = nil;
-  [ATHMCheckout.shared configureFor:AMEnvironmentDevelopment with:publicToken and:schema error:&error];
+  if (isProd) {
+    [ATHMCheckout.shared configureFor:AMEnvironmentProduction with:publicToken and:schema error:&error];
+  } else {
+    [ATHMCheckout.shared configureFor:AMEnvironmentDevelopment with:publicToken and:schema error:&error];
+  }
   ATHMCheckout.shared.delegate = self;
   APP_SCHEMA = schema;
   if (error != nil) {
@@ -150,9 +154,9 @@ NSString *VIEW_COMPONENT_PATH = @"paymentresult";
  * items: lista de items de la transacción
  * errorFn: función callback de JS que se ejecutará si ocurre un error
  */
-RCT_EXPORT_METHOD(pay:(nonnull NSString *)schema publicToken:(nonnull NSString *)publicToken total:(nonnull NSNumber *)total subtotal:(nonnull NSNumber *)subtotal tax:(nonnull NSNumber *)tax metadata1:(NSString *)metadata1 metadata2:(NSString *)metadata2 items:(NSArray *)items errorFn:(nonnull RCTResponseSenderBlock)errorFn) {
+RCT_EXPORT_METHOD(pay:(nonnull NSString *)schema publicToken:(nonnull NSString *)publicToken total:(nonnull NSNumber *)total subtotal:(nonnull NSNumber *)subtotal tax:(nonnull NSNumber *)tax metadata1:(NSString *)metadata1 metadata2:(NSString *)metadata2 items:(NSArray *)items isProd:(nonnull BOOL)isProd errorFn:(nonnull RCTResponseSenderBlock)errorFn) {
   @try {
-    [self configure:publicToken schema:schema];
+    [self configure:publicToken schema:schema isProd:isProd];
     [self _pay:600 total:total subtotal:subtotal tax:tax metadata1:metadata1 metadata2:metadata2 items:items];
   }
   @catch (NSError *error) {
@@ -173,9 +177,9 @@ RCT_EXPORT_METHOD(pay:(nonnull NSString *)schema publicToken:(nonnull NSString *
  * items: lista de items de la transacción
  * errorFn: función callback de JS que se ejecutará si ocurre un error
  */
-RCT_EXPORT_METHOD(payWithTimeout:(double)timeout schema:(NSString *)schema publicToken:(nonnull NSString *)publicToken total:(nonnull NSNumber *)total subtotal:(nonnull NSNumber *)subtotal tax:(nonnull NSNumber *)tax metadata1:(NSString *)metadata1 metadata2:(NSString *)metadata2 items:(NSArray *)items errorFn:(nonnull RCTResponseSenderBlock)errorFn) {
+RCT_EXPORT_METHOD(payWithTimeout:(double)timeout schema:(NSString *)schema publicToken:(nonnull NSString *)publicToken total:(nonnull NSNumber *)total subtotal:(nonnull NSNumber *)subtotal tax:(nonnull NSNumber *)tax metadata1:(NSString *)metadata1 metadata2:(NSString *)metadata2 items:(NSArray *)items isProd:(nonnull BOOL)isProd errorFn:(nonnull RCTResponseSenderBlock)errorFn) {
   @try {
-    [self configure:publicToken schema:schema];
+    [self configure:publicToken schema:schema isProd:isProd];
     [self _pay:timeout total:total subtotal:subtotal tax:tax metadata1:metadata1 metadata2:metadata2 items:items];
   }
   @catch (NSError *error) {
